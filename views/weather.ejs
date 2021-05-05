@@ -1,0 +1,34 @@
+<%- include("partials/header") %>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/weather.css">
+
+    </head>
+
+    <body>
+        <div class="main">
+            <div class="heading">
+                <h1>
+                    <%=climate%>
+                </h1>
+            </div>
+
+            <div class="background"><img src="<%=icon%>" alt="temp-icon" class="src">
+            </div>
+
+            <div class="form">
+                <div class="city">
+                    <p class="temp">
+                        Temprature: <span class=tempSpan>
+                            <%=temp%> °C
+                        </span>
+                    </p>
+                    <p class=WindSpeed>Wind speed: <span class=windSpan>
+                            <%=windspeed%> m/s
+                        </span>
+                </div>
+                <a class="back" href="/"><img
+                        src="https://www.flaticon.com/svg/vstatic/svg/570/570220.svg?token=exp=1620221191~hmac=47fbc429dff411dd8254a2d68b9ba2fe">
+                </a>
+            </div>
+        </div>
+        <%- include("partials/footer") %>

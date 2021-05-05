@@ -3,11 +3,14 @@ const express = require("express");
 const https = require("https");
 
 const app = express();
-app.use(express.urlencoded({ extended: true }));
 
+app.set("view engine", "ejs");
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 app.get("/", function (req, res) {
-    res.sendFile(__dirname + "/index.html");
+    res.render("index");
 
 });
 
@@ -23,17 +26,12 @@ app.post("/", function (req, res) {
             const windspeed = weather.wind.speed;
             const icon = "http://openweathermap.org/img/wn/" + weather.weather[0].icon + "@2x.png";
 
-
-            res.write("<p>Climate is " + climate + " </p>");
-            res.write("<h2>Temprature is " + temp + " </h2>");
-            res.write("<p>Wind speed is " + windspeed + "</p>");
-            res.write("<img src=" + icon + ">");
-            res.send();
+            res.render("weather", { icon: icon, temp: temp, climate: climate, windspeed: windspeed });
         });
     });
 })
 
-let port = process.env.PORT;
+let port = process.env.PORT || 80;
 app.listen(port, function () {
     console.log("Server started at " + port);
 })
