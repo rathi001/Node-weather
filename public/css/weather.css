@@ -1,18 +1,21 @@
 .background img{
     background-color: white;
     border-radius:5px;
-    margin:2rem;
+    margin:4%;
+    width:40%;
 }
 
 .city p{
-    margin:2rem;
+    margin:4%;
     position: relative;
 }
 
 .temp,.WindSpeed{
-    margin:2rem;
+    font-size: 200%;
+    margin:4%;
     position :relative;
-    left:4rem;
+    width:100%;
+    margin:0 auto;
     
 }
 .windSpan,.tempSpan{
@@ -23,8 +26,9 @@
     position: relative;
 }
 .back img{
-    width:2rem;
+    font-size: 50%;
+    width:20%;
     position:relative;
-    top:6rem;
-    left:10rem;
+    top:20%;
+    left:20%;
 }
