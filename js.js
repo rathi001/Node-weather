@@ -21,6 +21,10 @@ app.post("/", function (req, res) {
     https.get(url, function (response) {
         response.on("data", function (data) {
             const weather = JSON.parse(data);
+            if (weather.cod != 200) {
+                res.render("index");
+                return;
+            }
             const climate = weather.weather[0].main;
             const temp = weather.main.temp;
             const windspeed = weather.wind.speed;
