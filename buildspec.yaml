@@ -1,0 +1,22 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 10  
+    commands:
+      - npm install
+  pre_build:
+    commands:
+      - docker build -t weather .
+      - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 417901114174.dkr.ecr.ap-southeast-1.amazonaws.com
+      - docker tag weather:latest 417901114174.dkr.ecr.ap-southeast-1.amazonaws.com/weather:latest
+      - docker push 417901114174.dkr.ecr.ap-southeast-1.amazonaws.com/weather:latest
+  build:
+    commands:
+      - echo Compiling the Node.js code
+  post_build:
+    commands:
+      - echo Build completed on `date`
+# Include only the files required for your application to run.
+# Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
