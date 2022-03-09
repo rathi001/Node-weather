@@ -16,7 +16,7 @@ phases:
   post_build:
     commands:
       - docker tag weather-app rathijaat001/weather-app
-      - docker push rathijaat001/weather
+      - docker push rathijaat001/weather-app
       - echo Build completed on `date`
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
