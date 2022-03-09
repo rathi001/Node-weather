@@ -16,7 +16,7 @@ phases:
   post_build:
     commands:
       - docker tag weather-app rathijaat001/weather-app
-      - docker login -u demo -p password
+      - docker login -u rathijaat001 -p Docker@112001
       - docker push rathijaat001/weather-app
       - echo Build completed on `date`
 # Include only the files required for your application to run.
