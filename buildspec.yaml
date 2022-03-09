@@ -5,21 +5,18 @@ phases:
     runtime-versions:
       nodejs: 10  
     commands:
-      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay&
-      - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
       - npm install
   pre_build:
     commands:
-      - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 417901114174.dkr.ecr.ap-southeast-1.amazonaws.com
+      - docker -version
   build:
     commands:
-      - docker -version
-      - docker build -t weather .
+      - docker build -t weather-app .
       - echo Compiling the Node.js code
   post_build:
     commands:
-      - docker tag weather:latest 417901114174.dkr.ecr.ap-southeast-1.amazonaws.com/weather:latest
-      - docker push 417901114174.dkr.ecr.ap-southeast-1.amazonaws.com/weather:latest
+      - docker tag weather-app rathijaat001/weather-app
+      - docker push rathijaat001/weather
       - echo Build completed on `date`
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
