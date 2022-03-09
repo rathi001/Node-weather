@@ -12,12 +12,12 @@ phases:
   build:
     commands:
       - docker -version
-      - sudo docker build -t weather .
+      - docker build -t weather .
       - echo Compiling the Node.js code
   post_build:
     commands:
-      - sudo docker tag weather:latest 417901114174.dkr.ecr.ap-southeast-1.amazonaws.com/weather:latest
-      - sudo docker push 417901114174.dkr.ecr.ap-southeast-1.amazonaws.com/weather:latest
+      - docker tag weather:latest 417901114174.dkr.ecr.ap-southeast-1.amazonaws.com/weather:latest
+      - docker push 417901114174.dkr.ecr.ap-southeast-1.amazonaws.com/weather:latest
       - echo Build completed on `date`
 # Include only the files required for your application to run.
 # Do not use recursively include artifacts from node_modules directory as it will include unnecessary packages 
