@@ -9,6 +9,9 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+app.get("/health", function (req, res) {
+    res.sendStatus(200);
+});
 app.get("/", function (req, res) {
     res.render("index");
 
